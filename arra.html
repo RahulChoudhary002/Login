@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Validation Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        input {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Login Form</h2>
+        <form onsubmit="return validateForm()">
+            <input type="text" id="name" placeholder="Enter your name">
+            <input type="number" id="age" placeholder="Enter your age">
+            <button type="submit">Submit</button>
+        </form>
+        <p id="message" class="error"></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            let name = document.getElementById("name").value.trim();
+            let age = document.getElementById("age").value;
+            let message = document.getElementById("message");
+
+            if (name === "" || age === "") {
+                message.innerText = "Please fill in all fields.";
+                return false;
+            }
+
+            if (age < 18) {
+                message.innerText = "You must be at least 18 years old to continue.";
+                return false;
+            }
+
+            message.innerText = "Login successful!";
+            message.style.color = "green";
+            return false; // Prevents actual form submission for demo purposes
+        }
+    </script>
+
+</body>
+
+</html>
